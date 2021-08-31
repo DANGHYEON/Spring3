@@ -20,8 +20,8 @@
 		<constructor-arg type="java.lang.String" value="iu"> </constructor-arg> -->
 		
 		<constructor-arg name="dbConnector" ref="dBConnector"></constructor-arg>
-		<!-- <constructor-arg name="num" ref="10"></constructor-arg>
-		<constructor-arg name="name" ref="iu"></constructor-arg> -->
+		 <constructor-arg name="num" ref="10"></constructor-arg>
+		<constructor-arg name="name" ref="iu"></constructor-arg> 
 		
 		
 		

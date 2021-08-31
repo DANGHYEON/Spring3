@@ -26,18 +26,14 @@ public class BankbookController {
 	
 	
 	@RequestMapping(value = "bankbookList.do", method = RequestMethod.GET)
-	public ModelAndView list(Integer [] num, Model model) {
-		
+	public ModelAndView list(ModelAndView mv) {
 		ArrayList<BankBookDTO> ar = bankbookService.getList();
-		
 		
 		System.out.println("bankbook list");
 		
-		ModelAndView mv = new ModelAndView();
-		model.addAttribute("ar", ar);
+		//ModelAndView mv = new ModelAndView();
+		mv.addObject("ar", ar);
 		mv.setViewName("bankbook/bankbookList");
-		
-		
 		return mv;
 	}
 	
