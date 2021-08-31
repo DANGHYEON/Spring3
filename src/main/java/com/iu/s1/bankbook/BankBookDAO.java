@@ -19,6 +19,10 @@ public class BankBookDAO {
 	
 	
 	
+	public BankBookDAO(DBConnector dbConnector, int num, String name) {
+		this.connector = dbConnector;
+	}
+	
 	public BankBookDAO(DBConnector connector) {
 			this.connector = connector;
 		
