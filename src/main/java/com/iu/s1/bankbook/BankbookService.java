@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+
 public class BankbookService {
 	
 	private BankBookDAO bankBookDAO;
 	
 	
-	@Autowired
+	
 	public void setBankBookDAO(BankBookDAO bankBookDAO) {
 		this.bankBookDAO = bankBookDAO;
 	}
