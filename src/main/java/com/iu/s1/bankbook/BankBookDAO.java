@@ -6,30 +6,33 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.iu.s1.util.DBConnector;
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+
 
 public class BankBookDAO {
 	
-	private DBConnector connector;
+	@Autowired
+	private DataSource dataSource;
+	
 	private BankBookDTO bankBookDTO;
 	
 	
-	public BankBookDAO() {
-		connector = new DBConnector();
-		
-		
-	}
+	
 	
 	
 	public int setInsert(BankBookDTO bankbookDTO) {
 		Connection con =null;
 		PreparedStatement st=null;
 		int result = 0;
-		con = connector.getConnect();
+		
 		
 		String spl = "INSERT INTO BANKBOOK VALUES(bankbook_seq.nextval,?,?,?) ";
 		
 		try {
+			con = dataSource.getConnection();
 			st =con.prepareStatement(spl);
 			
 			
@@ -46,7 +49,7 @@ public class BankBookDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			connector.disConnect(st, con);
+			
 		}
 		
 		
@@ -63,11 +66,12 @@ public class BankBookDAO {
 		PreparedStatement st = null;
 		ResultSet rs =null;
 		bankBookDTO = null;
-		con = connector.getConnect();
+		
 		
 		String sql = "SELECT * FROM BANKBOOK";
 		
 		try {
+			con = dataSource.getConnection();
 			st= con.prepareStatement(sql);
 			
 			rs=st.executeQuery();
@@ -88,7 +92,7 @@ public class BankBookDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			connector.disConnect(rs, st, con);
+			
 		}
 		
 		return ar;
@@ -106,11 +110,12 @@ public class BankBookDAO {
 		ResultSet rs =null;
 		bankBookDTO = null;
 		
-		con = connector.getConnect();
+		
 		
 		String sql="SELECT * FROM BANKBOOK WHERE BOOKNUMBER=?";
 		
 		try {
+			con = dataSource.getConnection();
 			st=con.prepareStatement(sql);
 			st.setLong(1, bankbookdto.getBookNumber());
 			
@@ -131,7 +136,7 @@ public class BankBookDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			connector.disConnect(rs, st, con);
+			
 		}
 		
 		
