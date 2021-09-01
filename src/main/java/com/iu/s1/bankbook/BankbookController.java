@@ -1,7 +1,10 @@
 package com.iu.s1.bankbook;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,35 +17,29 @@ import org.springframework.web.servlet.ModelAndView;
 public class BankbookController {
 		//pojo (plain Old Java Object)
 	
+	@Autowired
+	private BankbookService bankBookService;
 	
-	@RequestMapping(value = "bankbookList.do", method = RequestMethod.GET)
-	public ModelAndView list(Integer [] num) {
+	
+	@RequestMapping("bankbookList")
+	public ModelAndView list(ModelAndView mv) {
 		
-		for(Integer i : num) {
-			System.out.println(i);
-		}
+		List<BankBookDTO> ar = bankBookService.getList();
 		
-		System.out.println("bankbook list");
-		
-		
-		ModelAndView mv = new ModelAndView();
+		mv.addObject("ar", ar);
 		mv.setViewName("bankbook/bankbookList");
 		
 		return mv;
 	}
 	
-	@RequestMapping("bankbookSelect.do")
-	public String select(@RequestParam(defaultValue="1", value = "n") Integer num,String name, Model model) {
-		System.out.println("bankbook select");
-		System.out.println("Value : "+num);
-		System.out.println("Name :" + name);
-		BankBookDTO bankBookDTO = new BankBookDTO();
-		bankBookDTO.setBookName("BookName");
-	
-		model.addAttribute("test", "iu");
+	@RequestMapping("bankbookSelect")
+	public void select(BankBookDTO bankBookDTO, Model model) {
+		
+		bankBookDTO = bankBookService.getSelect(bankBookDTO);
+		
 		model.addAttribute("dto", bankBookDTO);
 		
-		return "bankbook/bankbookSelect";
+	
 	}
 	
 	@RequestMapping("bankbookInsert.do")

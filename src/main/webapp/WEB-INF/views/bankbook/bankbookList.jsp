@@ -13,8 +13,24 @@
 <body>
 <c:import url="../temp/boot_nav.jsp"></c:import>
 	<h1>List Renewal</h1>
+	<div class="container-fluid">
+		<div class="col-md-8 mx-auto my-0">
+		<table class="table table-striped">
+			<tr>
+				<th>BookNumber</th> <th>BookName</th> <th>BookRate</th> <th>BookSale</th>
+			</tr>
+		<c:forEach items="${ar}" var="dto">
+			<tr>
+				<td><a href="./bankbookSelect?bookNumber=${dto.bookNumber}">${dto.bookNumber}</a></td>
+				<td>${dto.bookName}</td>
+				<td>${dto.bookRate}</td>
+				<td>${dto.bookSale}</td>
+			</tr>
+		</c:forEach>
 	
-
+		</table>
+		</div>
+	</div>
 
 
 </body>
