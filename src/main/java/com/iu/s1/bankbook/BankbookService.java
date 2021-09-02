@@ -12,6 +12,11 @@ public class BankbookService {
 	private BankBookDAO bankBookDAO;
 	
 	
+	public int setDlelte(Long bookNumber) {
+		return bankBookDAO.setDelete(bookNumber);
+	}
+	
+	
 	public BankBookDTO getSelect(BankBookDTO bankBookDTO) {
 		
 		return bankBookDAO.getSelect(bankBookDTO);
@@ -28,6 +33,8 @@ public class BankbookService {
 		return	bankBookDAO.setInsert(bankBookDTO);
 		
 	}
+	
+	
 	
 	
 

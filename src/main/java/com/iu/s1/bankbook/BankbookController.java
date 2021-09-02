@@ -42,11 +42,34 @@ public class BankbookController {
 	
 	}
 	
-	@RequestMapping("bankbookInsert.do")
-	public String insert(BankBookDTO bankBookDTO, Integer [] num) {
-		System.out.println(bankBookDTO.getBookName());
-		System.out.println("insert");
-		return "redirect:../";
+	@RequestMapping(value = "bankbookInsert", method = RequestMethod.GET)
+	public void insert() {
+		
+		
+	}
+	
+	@RequestMapping(value = "bankbookInsert",method = RequestMethod.POST)
+	public String insert(BankBookDTO bankBookDTO) {
+		
+		int result = bankBookService.setInsert(bankBookDTO);
+		
+		
+		return "redirect:./bankbookList";
+		
+		
+		/*
+		 * System.out.println("Insert : "+bankBookDTO.getBookName());
+		 * System.out.println(bankBookDTO.getBookSale());
+		 */
+		
+	}
+	
+	@RequestMapping("bankbookDelete")
+	public String delete(Long bookNumber) {
+		int result = bankBookService.setDlelte(bookNumber);
+		
+		
+		return "redirect:./bankbookList";
 	}
 	
 	

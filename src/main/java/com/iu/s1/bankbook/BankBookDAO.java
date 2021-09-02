@@ -17,6 +17,14 @@ public class BankBookDAO {
 	
 	
 	
+	
+	public int setDelete(Long bookNumber) {
+		return sqlSession.delete(NAMESPACE+"setDelete",bookNumber);
+	}
+	
+	
+	
+	
 	public int setInsert(BankBookDTO bankbookdto) {
 		return sqlSession.insert(NAMESPACE+"setInsert", bankbookdto);
 		

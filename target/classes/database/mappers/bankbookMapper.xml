@@ -18,5 +18,13 @@
 		INSERT INTO BANKBOOK VALUES(bankbook_seq.nextval,#{bookName},#{bookRate},#{bookSale})
 		
 	</insert>
-	  
+	
+	<delete id="setDelete" parameterType="java.lang.Long">
+		DELETE BANKBOOK WHERE BOOKNUMBER=#{bookNumber} <!-- 여기 bookNumber는 DAO에서 Long 타입에 매개변수이름임. -->
+	</delete>
+	
+	<!-- <delete id="setDelete" parameterType="com.iu.s1.bankbook.BankBookDTO">
+		DELETE BANKBOOK WHERE BOOKNUMBER=#{bookNumber}
+	</delete>
+	   -->
   </mapper>
