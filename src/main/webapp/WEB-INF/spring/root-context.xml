@@ -4,7 +4,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	<!-- 1. DataSource  -->
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
 			
 			<property name="username" value="user02"></property>
@@ -24,6 +23,4 @@
 	
 	</bean>
 		
-	
-	
 </beans>

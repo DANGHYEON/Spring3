@@ -12,13 +12,14 @@
 <c:import url="../temp/boot_nav.jsp"></c:import>
 	<h1>bankbook Select page</h1>
 	
-	<div>
+	<div class="container-fluid">
 	<h3>BookNumber : ${dto.bookNumber}</h3>
 	<h3>BookName : ${dto.getBookName()}</h3>
 	<h3>BookRate : ${dto.bookRate}</h3>
 	<h3>BookSale : ${dto.bookSale}</h3>
 	
 	<a href="./bankbookDelete?bookNumber=${dto.bookNumber}">Delete</a>
+	<a href="./bankbookUpdate?bookNumber=${dto.bookNumber}">Update</a>
 	</div>
 </body>
 </html>

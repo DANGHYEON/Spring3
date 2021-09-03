@@ -10,8 +10,16 @@
   	</select>
   
 	
-	<select id="getList" resultType="com.iu.s1.bankbook.BankBookDTO">
-		SELECT * FROM BANKBOOK
+	<select id="getList" resultType="com.iu.s1.bankbook.BankBookDTO" parameterType="com.iu.s1.util.Pager">
+		SELECT * FROM 
+		(SELECT rownum R, BK.* FROM 
+		(SELECT * 
+			FROM BANKBOOK 
+			ORDER BY BOOKNUMBER DESC
+			) 
+		BK
+		) 
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
 	
 	<insert id="setInsert" parameterType="com.iu.s1.bankbook.BankBookDTO"  >
@@ -22,6 +30,11 @@
 	<delete id="setDelete" parameterType="java.lang.Long">
 		DELETE BANKBOOK WHERE BOOKNUMBER=#{bookNumber} <!-- 여기 bookNumber는 DAO에서 Long 타입에 매개변수이름임. -->
 	</delete>
+	
+	<update id="setUpdate" parameterType="com.iu.s1.bankbook.BankBookDTO">
+		UPDATE BANKBOOK SET BOOKNAME=#{bookName}, BOOKRATE=#{bookRate}, BOOKSALE=#{bookSale}
+		WHERE BOOKNUMBER=#{bookNumber}
+	</update>
 	
 	<!-- <delete id="setDelete" parameterType="com.iu.s1.bankbook.BankBookDTO">
 		DELETE BANKBOOK WHERE BOOKNUMBER=#{bookNumber}
