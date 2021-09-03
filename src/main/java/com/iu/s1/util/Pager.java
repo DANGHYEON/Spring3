@@ -8,14 +8,64 @@ public class Pager {
 	private Long startRow;
 	private Long lastRow;
 	
+	private Long startNum;
+
+	private Long lastNum;
 	
-	
+	public void makeNum() {
+		//1. totalCount
+		Long totalCount = 210L;
+		
+		//2. totalPage 구하기
+		Long totalPage = totalCount / this.getPerPage();
+		
+		if(totalCount%this.getPerPage() !=0) {
+			totalPage = totalPage+1;
+		}
+		
+		//3. totalBlock 구하기
+		Long totalBlock = totalPage / 5;
+		
+		if(totalPage%5 !=0) {
+			totalBlock = totalBlock+1;
+		}
+		
+		//4. pn으로 curBlock 구하기
+		Long curBlock = this.getPn()/5;
+		
+		if(this.getPn()%5 !=0) {
+			curBlock = curBlock+1;
+		}
+		
+		//5. curblock으로 시작번호와 마지막 번호 구하기
+		this.startNum=(curBlock-1)*5+1;
+		this.lastNum=curBlock*5;
+		
+		
+		
+	}
 	
 	public void makeRow() {
 		this.startRow = (this.getPn()-1)*this.getPerPage()+1;
 		this.lastRow = this.getPn() * this.getPerPage();
 	}
 	
+	
+	public Long getStartNum() {
+		return startNum;
+	}
+
+	public void setStartNum(Long startNum) {
+		this.startNum = startNum;
+	}
+
+	public Long getLastNum() {
+		return lastNum;
+	}
+
+	public void setLastNum(Long lastNum) {
+		this.lastNum = lastNum;
+	}
 	
 	public Long getPerPage() {
 		if(this.perPage==null || this.perPage==0) {
