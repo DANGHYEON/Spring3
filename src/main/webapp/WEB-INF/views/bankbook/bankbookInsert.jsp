@@ -12,6 +12,7 @@
 <body>
 <c:import url="../temp/boot_nav.jsp"></c:import>
 	<h1>Insert Page</h1>
+	
 	<div class="container-fluid">
 		<form class="col-md-5 mx-auto" action="./bankbookInsert" method="post">
 			<div class="mb-3">

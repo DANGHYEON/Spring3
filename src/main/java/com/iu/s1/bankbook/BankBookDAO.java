@@ -59,6 +59,10 @@ public class BankBookDAO {
 		
 	}
 	
+	public Long getCount() {
+		return sqlSession.selectOne(NAMESPACE+"getCount");
+	}
+	
 	
 	
 	
