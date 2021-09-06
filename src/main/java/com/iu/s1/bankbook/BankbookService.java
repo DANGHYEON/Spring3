@@ -33,7 +33,7 @@ public class BankbookService {
 		//totalCount 구하기
 		System.out.println(pager.getKind());
 		System.out.println(pager.getSearch());
-		pager.makeNum(bankBookDAO.getCount());
+		pager.makeNum(bankBookDAO.getCount(pager));
 		pager.makeRow();
 		return	bankBookDAO.getList(pager);
 		
