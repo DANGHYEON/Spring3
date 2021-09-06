@@ -13,7 +13,11 @@ public class Pager {
 	
 	private Long totalPage;
 	
+	private String kind;
+	private String search;
 
+
+	
 
 	public void makeNum(Long totalCount) {
 		//1. totalCount
@@ -118,6 +122,24 @@ public class Pager {
 	public Long getTotalPage() {
 		return totalPage;
 	}
+	
+	public String getKind() {
+		return kind;
+	}
 
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+
+	public String getSearch() {
+		if(this.search==null) {
+			this.search="";
+		}
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
 	
 }

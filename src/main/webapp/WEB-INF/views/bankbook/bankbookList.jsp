@@ -13,8 +13,26 @@
 <body>
 <c:import url="../temp/boot_nav.jsp"></c:import>
 	<h1>List Renewal</h1>
+	
 	<div class="container-fluid">
 		<div class="col-md-7 mx-auto my-2">
+		<!-- search Form Start -->
+	<form action="./bankbookList" method="get">
+		
+		 <div class="input-group mb-3" >
+		  <select name="kind" class="form-select form-select-sm" aria-label=".form-select-sm example">
+			  <option value="num">Num</option>
+			  <option value="name">Name</option>
+			  <option value="rate">Rate</option>
+			</select>
+		  
+		  <input type="text" name="search" class="form-control" aria-label="Text input with dropdown button">
+		  <button type="submit" class="btn btn-outline-secondary">Search</button>
+		</div>
+			
+		</form>
+		<!-- search Form Finish  -->
+
 		<table class="table table-striped">
 			<tr>
 				<th>BookNumber</th> <th>BookName</th> <th>BookRate</th> <th>BookSale</th>
